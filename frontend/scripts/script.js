@@ -20,12 +20,36 @@ comecar.addEventListener("click", async () => {
 });
 
 function infosPokemon() {
-        todosPokemons.forEach(pokemon => {
-            appeared.innerHTML += `
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <h5 class="modal-tittle">${pokemon.name}</h5>
-                    <img src="${pokemon.sprites.other["official-artwork"].front_default}">
+    todosPokemons.forEach((pokemon, index) => {
+        appeared.innerHTML += `
+            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalPokemon" onclick="mostrarDetalhes(${index})">
+                <div class="card" style="width: 18rem;">
+                <img src="${pokemon.sprites.other["official-artwork"].front_default}" class="card-img-top" alt="Arte do Pokémon">
+                    <div class="card-body">
+                        <h5 class="card-title">${pokemon.name}</h5>
+                    </div>
                 </div>
-            `;
-        });
-    }; 
+            </button>
+        `;
+    });
+};
+
+function mostrarDetalhes(index) {
+    const pokemon = todosPokemons[index];
+    const tipos = pokemon.types.map(t => t.type.name).join(", ");
+    const hp = pokemon.stats[0].base_stat;
+    const atk = pokemon.stats[1].base_stat;
+    const def = pokemon.stats[2].base_stat;
+    const speed = pokemon.stats[5].base_stat;
+
+    document.getElementById("imagem").src = `${pokemon.sprites.front_default}`;
+    document.getElementById("modalPokemonLabel").innerText = (pokemon.name);
+    document.getElementById("tipo").innerText = "Tipo 🧬: " + tipos + ".";
+    document.getElementById("peso").innerText = "Peso ⚖️: " + (pokemon.weight / 10) + " Kg.";
+    document.getElementById("altura").innerText = "Altura 📏: " + (pokemon.height / 10) + " m.";
+
+    document.getElementById("vida").innerText = "HP (Pontos de vida ❤️): " + hp + " pts.";
+    document.getElementById("ataque").innerText = "ATK (Ataque ⚔️): " + atk + " pts.";
+    document.getElementById("defesa").innerText = "DEF (Defesa 🛡️): " + def + " pts.";
+    document.getElementById("velocidade").innerText = "SPEED (Velocidade 👟): " + speed + " pts.";
+};

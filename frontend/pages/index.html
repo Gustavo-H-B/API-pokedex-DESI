@@ -15,9 +15,33 @@
     </header>
 
     <main>
+        <img src="../assets/pokeDesi.jpg" alt="Esperando">
         <button id="comecar">Começar a Aventura!</button>
         <div id="appeared"></div>
     </main>
+
+    <div class="modal fade" id="modalPokemon" tabindex="-1" aria-labelledby="modalPokemonLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalPokemonLabel">nome do pokemon</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div>
+                    <img id="imagem" src="" alt="Imagem do Pokémon">
+                    <p id="tipo">Tipo 🧬: </p>
+                    <p id="peso">Peso ⚖️: </p>
+                    <p id="altura">Altura 📏: </p>
+                </div>
+                <div class="modal-body" id="modalPokemonBody">
+                    <p id="vida"><strong>HP (Pontos de vida ❤️): </strong></p>
+                    <p id="ataque"><strong>ATK (Ataque ⚔️): </strong></p>
+                    <p id="defesa"><strong>DEF (Defesa 🛡️): </strong></p>
+                    <p id="velocidade"><strong>SPEED (Velocidade 👟): </strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         copyright: NINTENDO 2027
