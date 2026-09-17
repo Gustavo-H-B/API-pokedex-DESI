@@ -2,6 +2,7 @@ const comecar = document.getElementById("comecar");
 let todosPokemons = [];
 
 comecar.addEventListener("click", async () => {
+    audioAventura.play();
     
     document.querySelector("main img").style.display = "none";
     comecar.style.display = "none";
@@ -11,7 +12,7 @@ comecar.addEventListener("click", async () => {
         document.querySelector("main img").style.display = "none";
         comecar.style.display = "none";
 
-        const response = await fetch ("https://pokeapi.co/api/v2/pokemon?limit=100");
+        const response = await fetch ("https://pokeapi.co/api/v2/pokemon?limit=136");
         const dados = await response.json();
 
         todosPokemons = await Promise.all(
@@ -20,7 +21,6 @@ comecar.addEventListener("click", async () => {
                 return await response.json();
             })
         );
-
 
         infosPokemon();
     } catch (error) {
@@ -36,7 +36,7 @@ function infosPokemon(lista = todosPokemons) {
         const indexReal = todosPokemons.findIndex(p => p.id === pokemon.id);
 
         appeared.innerHTML += `
-            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalPokemon" onclick="mostrarDetalhes(${indexReal})">
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#modalPokemon" onclick="mostrarDetalhes(${indexReal})">
                 <div class="card" style="width: 18rem;">
                     <img src="${pokemon.sprites.other["official-artwork"].front_default}" class="card-img-top" alt="Arte do Pokémon">
                     <div class="card-body">
